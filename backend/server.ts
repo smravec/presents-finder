@@ -6,17 +6,7 @@ const router = new Router();
 
 // Define the root route
 router.get("/", (context) => {
-  context.response.body = "Welcome to the Deno API using Oak!";
-});
-
-// Define the /api/users route
-router.get("/api/users", (context) => {
-  const users = [
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" },
-  ];
-
-  context.response.body = users;
+  context.response.body = "API online!";
 });
 
 router.post("/analyze-results", async (context) => {
