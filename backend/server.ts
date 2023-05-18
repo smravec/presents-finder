@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak@v12.3.0/mod.ts";
 import{analyzeQuiz} from "./quiz.ts";
 
 const app = new Application();
