@@ -42,11 +42,12 @@ main{
 
     text-decoration: none;
 
-    border: 1px solid rgb(63, 63, 63);
+    border: 1px solid rgb(60, 60, 60);
     background-color: #F6C90E;
 
     height: 45px;
     width: 240px;
+    min-width: fit-content;
 
     margin-top: 80px;
     margin-left: calc(50% - 260px/2);
@@ -55,8 +56,11 @@ main{
     border-radius: 8px;
 
     cursor: pointer;
+    font-weight: 400;
     font-size: 28px;
     color: rgb(29, 29, 29);
+
+    font-family: 'Oswald';
 
     user-select: none;
 
