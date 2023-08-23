@@ -1,3 +1,12 @@
+<script>
+    import { init } from "@vercel/analytics";
+  
+    if (typeof window !== "undefined") {
+      init();
+    }
+</script>
+
+
 <style>
 :global(*){
     font-family: 'Roboto',sans-serif;
