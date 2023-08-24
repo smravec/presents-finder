@@ -1,0 +1,101 @@
+#start{
+    font-weight: 400;
+    border: none;
+    border: 1px solid rgb(60, 60, 60);    
+    border-radius: 8px;
+
+    font-family: "Oswald";
+    font-size: 28px;
+
+    padding: 2px 20px 2px 20px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    
+    width: 20vw;
+    min-width: 140px;
+
+    cursor: pointer;
+
+    background-color: #F6C90E;
+    color: rgb(29, 29, 29);
+    
+    /*Glow effect*/
+    -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
+    -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+    box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+}
+
+
+#clock-icon{
+    margin-top: 3px;
+    width: 24px;
+    color: rgb(60, 60, 60)
+}
+
+#time , #num-of-questions{
+    margin-left: 6px;
+    color: rgb(60, 60, 60);
+}
+
+#time-container, #question-container{
+    display: flex;
+    align-items: center;
+}
+
+#question-icon{
+    width: 24px;
+    color: rgb(60, 60, 60);
+    margin-top: 6px;
+}
+
+#icons-container{
+    display: flex;
+    width: 80vw;
+    margin-top: 18px;
+    justify-content: space-around;
+}
+
+#start-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    background-color: rgb(21, 21, 21);
+    border: 1px solid rgb(34, 34, 34);
+}
+
+#gift-icon{
+    width: 35px;
+    color: #F6C90E;
+}
+
+#title-container{
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+#title{
+    color: rgb(232, 232, 232);
+    font-size: 26px;
+    margin-left: 10px;
+    font-family: "Oswald";
+}
+
+#guide, #description{
+    font-family: "Roboto";
+    font-weight: 100;
+    font-size: 17px;
+    margin-top: 14px;
+}
+
+#guide{
+    font-weight: 400;
+    color: rgb(60, 60, 60);
+}
+
+#animation{
+
+}
