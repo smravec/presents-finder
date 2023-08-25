@@ -25,21 +25,23 @@
             <GoGift/>
         </div>
         <div id="title">
-            Present Finder
+            Presents Findr
         </div>
     </div>
 
-    <div id="description">
-        Ai tool that helps you find the perfect present 
+    <div id="description1">
+        Ai tool that helps you find the perfect present
+        <span id="animation">
+            for your friend
+        </span>
     </div>
 
-    <div id="animation">
-        for your friend
-    </div>
     
-    <div id="guide">
-        *For each question pick all <br/> the answers that apply
+
+    <div id="description2">
+        Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of ai  
     </div>
+
 
 
     <div id='icons-container'>

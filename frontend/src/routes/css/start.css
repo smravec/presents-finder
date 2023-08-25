@@ -7,13 +7,10 @@
     font-family: "Oswald";
     font-size: 28px;
 
-    padding: 2px 20px 2px 20px;
+    padding: 2px 50px 2px 50px;
     margin-top: 15px;
     margin-bottom: 25px;
     
-    width: 20vw;
-    min-width: 140px;
-
     cursor: pointer;
 
     background-color: #F6C90E;
@@ -62,34 +59,44 @@
     border-radius: 6px;
     background-color: rgb(21, 21, 21);
     border: 1px solid rgb(34, 34, 34);
+
+    width: 100vw;
+    height: 100vh;
 }
 
 #gift-icon{
-    width: 35px;
+    width: 38px;
     color: #F6C90E;
 }
 
 #title-container{
     align-items: center;
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 24px;
+    margin-bottom: 40px;
     border-bottom: 1px solid rgb(60, 60, 60);
 }
 
 #title{
     color: rgb(232, 232, 232);
-    font-size: 26px;
+    font-size: 34px;
     margin-left: 10px;
     font-family: "Oswald";
 }
 
-#guide, #description{
+#description1, #description2{
     font-family: "Roboto";
     font-weight: 100;
-    font-size: 17px;
+    font-size: 26px;
     margin-top: 14px;
+    margin: 14px 10% 0 10%;
+    text-align: center;
 }
+
+#description2{
+    margin-top: 50px;
+}
+
 
 #guide{
     font-weight: 400;
@@ -97,5 +104,7 @@
 }
 
 #animation{
-
+    font-size: 28px;
+    font-weight: 400;
+    white-space: nowrap;
 }
