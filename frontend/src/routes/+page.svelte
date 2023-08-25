@@ -36,13 +36,10 @@
         </span>
     </div>
 
-    
-
     <div id="description2">
-        Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of ai  
+        Fill out a quick 2 min quiz and get personalized gift ideas <br/> for someone with the help of ai.<br/>  
+        Presents in any budget, all age ranges, <br/> any interests and hobbies...
     </div>
-
-
 
     <div id='icons-container'>
 
