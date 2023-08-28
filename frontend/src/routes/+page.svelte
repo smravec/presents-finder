@@ -37,31 +37,11 @@
     </div>
 
     <div id="description2">
-        Fill out a quick 2 min quiz and get personalized gift ideas <br/> for someone with the help of ai.<br/>  
-        Presents in any budget, all age ranges, <br/> any interests and hobbies...
+        Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of ai.  
+        Presents in any budget, all age ranges, any interests and hobbies...
     </div>
 
-    <div id='icons-container'>
-
-    <div id="time-container">
-        <div id="clock-icon">
-            <FaRegClock/>
-        </div>
-        <div id="time">
-            2.5 min
-        </div>
-    </div>
-
-    <div id="question-container">
-        <div id="question-icon">
-            <MdChatBubbleOutline/>
-        </div>
-        <div id="num-of-questions">
-            6 questions
-        </div>
-    </div>
     
-    </div>
 
     <button 
     id="start"
@@ -70,6 +50,28 @@
     }}>
         Start
     </button>
+
+    <div id='icons-container'>
+
+        <div id="time-container">
+            <div id="clock-icon">
+                <FaRegClock/>
+            </div>
+            <div id="time">
+                2.5 min
+            </div>
+        </div>
+    
+        <div id="question-container">
+            <div id="question-icon">
+                <MdChatBubbleOutline/>
+            </div>
+            <div id="num-of-questions">
+                6 questions
+            </div>
+        </div>
+        
+        </div>
 
     </div>
     {:else}
