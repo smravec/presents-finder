@@ -4,21 +4,17 @@
     import MdChatBubbleOutline from 'svelte-icons/md/MdChatBubbleOutline.svelte'
     import GoGift from 'svelte-icons/go/GoGift.svelte'
 
-    //Css
-    import './css/start.css'
-
-    let Quiz = [["Question1"],["answer1",'answer1'],["Question2"],["answer2",'answer2','answer2','answer2','answer2','answer2','answer2','answer2']]
-    let CurrentQuestion = 0
-
-    let Started = false
+    //TODO on this page
+    /*
+    - Make it responsive for desktop
+    - Make the animation for the word friend which retypes itself into other words
+    - Add on load animations to other elements
+    */
 
 </script>
 
 
-<main id={Started === false ? "layout-start" : ""}>
-    
-    {#if Started === false }
-    <div id="start-container">
+<main>    
     
     <div id="title-container">
         <div id="gift-icon">
@@ -36,138 +32,81 @@
         </span>
     </div>
 
-    <div id="description2">
-        Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of ai.  
-        Presents in any budget, all age ranges, any interests and hobbies...
-    </div>
 
-    
-    <div id='icons-container'>
 
-        <div id="time-container">
-            <div id="clock-icon">
-                <FaRegClock/>
-            </div>
-            <div id="time">
-                2.5 min
-            </div>
-        </div>
-    
-        <div id="question-container">
-            <div id="question-icon">
-                <MdChatBubbleOutline/>
-            </div>
-            <div id="num-of-questions">
-                6 questions
-            </div>
-        </div>
-        
-    </div>
-
-    <button 
+    <a 
     id="start"
-    on:click={()=>{
-        Started = true
-    }}>
+    href="quiz">
         Start
-    </button>
+    </a>
 
-    </div>
-    {:else}
-    <div id="header">
-        <div>Question 1/6</div>
-        <div>(Select all that apply)</div>
-    </div>
+    <div id="usage-container">
     
-    <div id="question">Q1. {Quiz[CurrentQuestion]}</div>
-    
-        <div id="answer-container">
-            {#each Quiz[CurrentQuestion + 1] as Answer }
-                <button id="answer">{Answer}</button>
-            {/each}
+        <div id="title2">
+            What it is
         </div>
-    
-    <button 
-    id="submit"
-    on:click={()=>{
-    if(CurrentQuestion + 2 <= Quiz.length - 1)
-    {CurrentQuestion = CurrentQuestion + 2}
-    else{
-        CurrentQuestion = 0
-    }}}>
-        {#if CurrentQuestion === Quiz.length - 2  }
-            Submit
-        {:else}
-            Next
-        {/if}
-        
-    </button>
 
-    {/if}
+        <div id="description2">
+            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai.  
+            Presents in any budget, all age ranges, any interests and hobbies...
+        </div>
+
+        <div id='icons-container'>
+
+            <div id="time-container">
+                <div id="clock-icon">
+                    <FaRegClock/>
+                </div>
+                <div id="time">
+                    2.5 min
+                </div>
+            </div>
+        
+            <div id="question-container">
+                <div id="question-icon">
+                    <MdChatBubbleOutline/>
+                </div>
+                <div id="num-of-questions">
+                    6 questions
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
     
 </main>
 
 <style>
-    
+
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    border-radius: 6px;
+    background-color: rgb(21, 21, 21);
+    border: 1px solid rgb(34, 34, 34);
 
-#layout-start{
-    justify-content: center;
-    height: 100vh;
-}
-
-#header{
-    display: flex;
     width: 100vw;
-    justify-content:space-evenly;
-    margin-top: 25px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgb(60, 60, 60);
+    height: fit-content;
+    min-height: 100vh;
+
 }
 
-
-#question{
-    color: white;
-}
-
-#answer-container{
-    border-radius: 5px;
-    padding: 10px;
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-}
-
-#answer{
-    border: 1px solid rgb(60, 60, 60);
-    background-color: rgb(34, 34, 34);
-    border-radius: 7px;
-    margin-top: 20px;
-    padding: 10px;
-
-    cursor: pointer;
-    color:white
-}
-
-#submit{
+#start{
+    font-weight: 400;
+    text-decoration: none;
     border: none;
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
 
     font-family: "Oswald";
-    font-size: 28px;
-    font-weight: 300;
+    font-size: 33px;
 
-    padding: 2px 20px 2px 20px;
-    margin-top: 20px;
+    padding: 2px 50px 2px 50px;
+    margin-top: 40px;
+    margin-bottom: 100px;
     
-    width: 20vw;
-    min-width: 140px;
-
     cursor: pointer;
 
     background-color: #F6C90E;
@@ -179,12 +118,100 @@ main{
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
 }
 
-div{
+#gift-icon{
+    width: 38px;
+    color: #F6C90E;
+}
+
+#title-container{
+    align-items: center;
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+#title{
+    color: rgb(232, 232, 232);
+    font-size:  40px;
+    margin-left: 10px;
+    font-family: "Oswald";
+    user-select: none;
+}
+
+#description1{
+    font-family: "Roboto";
+    font-weight: 100;
+    font-size: 33px;
+    margin: 20px 10% 30px 10%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+#description2{
+    font-weight: 100;
+    font-size: 24px;
+    text-align: center ;
+    color: rgb(135, 135, 135);
+    width: fit-content;
+    margin: 0px 20px 30px 20px;
+}
+
+#animation{
+    font-size: 33px;
+    font-weight: 400;
     color: rgb(255, 255, 255);
 
 }
 
+#title2{
+    font-family: "Oswald";
+    font-size: 32px;
+    color: rgb(190, 185, 162);
 
+    margin-bottom: 20px;
+}
 
+#usage-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(25, 25, 25);
+    padding-top: 20px;
+    border-top: 1px solid rgb(41, 41, 41);
+    min-height: 50vh;
+    height: fit-content;
+
+}
+
+#clock-icon{
+    margin-top: 3px;
+    width: 24px;
+    color: rgb(60, 60, 60)
+}
+
+#time , #num-of-questions{
+    margin-left: 6px;
+    color: rgb(60, 60, 60);
+}
+
+#time-container, #question-container{
+    display: flex;
+    align-items: center;
+}
+
+#question-icon{
+    width: 24px;
+    color: rgb(60, 60, 60);
+    margin-top: 6px;
+}
+
+#icons-container{
+    display: flex;
+    width: 80vw;
+    margin-top: 10px;
+    justify-content: space-around;
+}
 
 </style>
