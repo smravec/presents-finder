@@ -42,15 +42,6 @@
     </div>
 
     
-
-    <button 
-    id="start"
-    on:click={()=>{
-        Started = true
-    }}>
-        Start
-    </button>
-
     <div id='icons-container'>
 
         <div id="time-container">
@@ -71,7 +62,15 @@
             </div>
         </div>
         
-        </div>
+    </div>
+
+    <button 
+    id="start"
+    on:click={()=>{
+        Started = true
+    }}>
+        Start
+    </button>
 
     </div>
     {:else}
