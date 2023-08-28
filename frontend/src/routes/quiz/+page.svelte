@@ -2,33 +2,45 @@
     
     let Quiz = [["Question1"],["answer1",'answer1'],["Question2"],["answer2",'answer2','answer2','answer2','answer2','answer2','answer2','answer2']]
     let CurrentQuestion = 0
+    let Answers = []
+
+    let SelectedAnyAnswer = false
+
+    //TODO on this page
+    /*
+    - Finish the design
+    - Add functionality to the buttons 
+    */
 
 </script>
 
 <main>
-    <div id="header">
-        <div>Question 1/6</div>
-        <div>(Select all that apply)</div>
-    </div>
     
     <div id="question">Q1. {Quiz[CurrentQuestion]}</div>
     
         <div id="answer-container">
             {#each Quiz[CurrentQuestion + 1] as Answer }
-                <button id="answer">{Answer}</button>
+                <button 
+                id="answer"
+                on:click={()=>{
+                    SelectedAnyAnswer = true
+                }}>
+                    {Answer}
+                </button>
             {/each}
         </div>
     
     <button 
-    id="submit"
+    disabled={SelectedAnyAnswer ? false : true}
+    id={SelectedAnyAnswer ? "submit" : "disabled-submit"}
     on:click={()=>{
     if(CurrentQuestion + 2 <= Quiz.length - 1)
-    {CurrentQuestion = CurrentQuestion + 2}
+    {CurrentQuestion = CurrentQuestion + 2;SelectedAnyAnswer = false}
     else{
-        CurrentQuestion = 0
+        window.location = "/results"
     }}}>
         {#if CurrentQuestion === Quiz.length - 2  }
-            Submit
+            Evaluate
         {:else}
             Next
         {/if}
@@ -43,10 +55,7 @@
     align-items: center;
 }
 
-#layout-start{
-    justify-content: center;
-    height: 100vh;
-}
+
 
 #header{
     display: flex;
@@ -81,7 +90,7 @@
     color:white
 }
 
-#submit{
+#submit, #disabled-submit{
     border: none;
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
@@ -105,6 +114,19 @@
     -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
     -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+}
+
+#disabled-submit{
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(32, 32, 32);
+    color: rgb(42, 42, 42);
+
+    cursor: default;
+
+     /*Glow effect*/
+    -webkit-box-shadow:none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 </style>

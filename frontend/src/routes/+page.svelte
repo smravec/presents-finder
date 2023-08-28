@@ -32,8 +32,6 @@
         </span>
     </div>
 
-
-
     <a 
     id="start"
     href="quiz">
@@ -48,7 +46,7 @@
 
         <div id="description2">
             Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai.  
-            Presents in any budget, all age ranges, any interests and hobbies...
+            Presents for any budget, all age ranges, any interests and hobbies...
         </div>
 
         <div id='icons-container'>
