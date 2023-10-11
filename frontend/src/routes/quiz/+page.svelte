@@ -1,10 +1,9 @@
 <script>
     
-    let Quiz = [["Question1"],["answer1",'answer1'],["Question2"],["answer2",'answer2','answer2','answer2','answer2','answer2','answer2','answer2']]
+    let Quiz = [["Question1"],[["Answer to question",false],['Another answer to same question',false]],["Question2"],[["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false]]]
     let CurrentQuestion = 0
-    let Answers = []
 
-    let SelectedAnyAnswer = false
+    let HowMuchAnswersSelected = 0
 
     //TODO on this page
     /*
@@ -16,26 +15,33 @@
 
 <main>
     
-    <div id="question">Q1. {Quiz[CurrentQuestion]}</div>
+    <div id="question">{Quiz[CurrentQuestion]}</div>
     
         <div id="answer-container">
             {#each Quiz[CurrentQuestion + 1] as Answer }
                 <button 
-                id="answer"
+                id={Answer[1] ? "answer-selected" : "answer"}
                 on:click={()=>{
-                    SelectedAnyAnswer = true
+                    if(Answer[1] === false){
+                        HowMuchAnswersSelected += 1
+                        Answer[1] = true
+                    }
+                    else{
+                        HowMuchAnswersSelected -= 1
+                        Answer[1] = false
+                    }
                 }}>
-                    {Answer}
+                    {Answer[0]}
                 </button>
             {/each}
         </div>
     
     <button 
-    disabled={SelectedAnyAnswer ? false : true}
-    id={SelectedAnyAnswer ? "submit" : "disabled-submit"}
+    disabled={HowMuchAnswersSelected > 0 ? false : true}
+    id={HowMuchAnswersSelected > 0 ? "submit" : "disabled-submit"}
     on:click={()=>{
     if(CurrentQuestion + 2 <= Quiz.length - 1)
-    {CurrentQuestion = CurrentQuestion + 2;SelectedAnyAnswer = false}
+    {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = false}
     else{
         window.location = "/results"
     }}}>
@@ -55,20 +61,10 @@
     align-items: center;
 }
 
-
-
-#header{
-    display: flex;
-    width: 100vw;
-    justify-content:space-evenly;
-    margin-top: 25px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgb(60, 60, 60);
-}
-
-
 #question{
     color: white;
+    margin-top: 18px;
+    font-size: 28px;
 }
 
 #answer-container{
@@ -79,15 +75,28 @@
     flex-direction: column;
 }
 
-#answer{
+#answer, #answer-selected{
+    -webkit-tap-highlight-color: transparent;
+
     border: 1px solid rgb(60, 60, 60);
     background-color: rgb(34, 34, 34);
     border-radius: 7px;
     margin-top: 20px;
-    padding: 10px;
+    padding: 10px;     
+
+    font-family: "Roboto Mono";
 
     cursor: pointer;
-    color:white
+    color:white;
+}
+
+#answer-selected{    
+    background:  #F6C90E;    
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+
+    border: 1px solid rgb(23, 23, 23);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 #submit, #disabled-submit{
@@ -97,24 +106,27 @@
 
     font-family: "Oswald";
     font-size: 28px;
-    font-weight: 300;
+    font-weight: 500;
 
     padding: 2px 20px 2px 20px;
     margin-top: 20px;
     
-    width: 20vw;
+    min-width: 20vw;
     min-width: 140px;
 
     cursor: pointer;
 
     background-color: #F6C90E;
     color: rgb(29, 29, 29);
+
+    -webkit-tap-highlight-color: transparent;
     
-    /*Glow effect*/
+   /*Glow effect*/ 
     -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
     -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
 }
+
 
 #disabled-submit{
     background-color: rgb(27, 27, 27);
