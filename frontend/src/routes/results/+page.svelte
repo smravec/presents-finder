@@ -16,14 +16,13 @@
 </script>
 
 <main>
-
-    <button 
-    on:click={()=>{ window.location.replace("/quiz")}}>
-        Take the quiz again
-    </button>
-
     <div id="heading">
-        Results
+        Your Results
+    </div>
+
+    <div id="affiliate-reminder">
+        By purchasing trough our links you support this project at no additional cost to you. 
+        <br/> Thank You! 
     </div>
 
     <div class="price-container">
@@ -40,9 +39,9 @@
         <div class="item-name">
             {item}
         </div>
-        <a class="buy-link" href="https://amazon.com" target="_blank">
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
             Buy on Amazon
-        </a>
+        </button>
     </div>
     {/each}
     </div>
@@ -61,9 +60,9 @@
         <div class="item-name">
             {item}
         </div>
-        <a class="buy-link" href="https://amazon.com" target="_blank">
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
             Buy on Amazon
-        </a>
+        </button>
     </div>
     {/each}
     </div>
@@ -82,9 +81,9 @@
         <div class="item-name">
             {item}
         </div>
-        <a class="buy-link" href="https://amazon.com" target="_blank">
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
             Buy on Amazon
-        </a>
+        </button>
     </div>
     {/each}
     </div>
@@ -103,13 +102,28 @@
         <div class="item-name">
             {item}
         </div>
-        <a class="buy-link" href="https://amazon.com" target="_blank">
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
             Buy on Amazon
-        </a>
+        </button>
     </div>
     {/each}
     </div>
 
+    <div id="footer">
+        <div id="better-suggestions">Want better suggestions?</div>
+        <div id="better-suggestion-tips">
+            Dummy text on how to get better suggestions random words from now on to fill the space and make it the length
+        </div>
+        <button
+        id="take-quiz-again" 
+        on:click={()=>{ window.location.replace("/quiz")}}>
+            Take the quiz again
+        </button>
+
+        <div id="disclaimer">
+            *By clicking this button all your <br/> current suggestions will dissapear
+        </div>
+    </div>
 </main>
 
 <style>
@@ -119,12 +133,23 @@
     }
 
     #heading{
-        font-size: 50px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 42px;
         align-self: center;
+        font-family: "Roboto Mono";
+        color: rgb(236, 236, 236);
     }
 
-    div{
-        color: white;
+    #affiliate-reminder{
+        font-family: "Roboto Mono";
+        font-size: 17px;
+        margin: 5px 10px 0px 10px;
+        text-align: center;
+        min-height: fit-content;
+        color: rgb(122, 122, 122);
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.252);
     }
 
     .price-container{
@@ -175,19 +200,25 @@
         padding-bottom: 15px;
     }
 
-
     .buy-link{
         text-decoration: none;
-        color: rgb(42, 42, 42);
-        background-color: yellow;
+        border: 1px solid rgb(23, 23, 23);
+        background-color: #F6C90E;
+        color: rgb(29, 29, 29);
         width: 50%;
         border-radius: 10px;
         text-align: center;
         align-self: center;
         margin-top: 10px;;
-        margin-bottom: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        margin-bottom: 15px;
+        padding: 5px 0px 5px 0px;
+        font-weight: 600;
+        font-family: "Roboto Mono";
+        font-size: 13px;
+    }
+
+    .buy-link:hover{
+        cursor: pointer;
     }
 
     .item-name{
@@ -195,8 +226,63 @@
         margin-left: 5px;
         margin-right: 5px;
         height: 35px;
+        font-family: "Roboto";
     }
 
+    #footer{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        background-color: rgb(25, 25, 25);
+        padding-top: 20px;
+        border-top: 1px solid rgb(41, 41, 41);
+        align-items: center;
+    }
 
-    
+    #better-suggestions{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        color: rgb(190, 185, 162);
+        font-weight: 400;
+        font-size: 32px;
+        align-self: center;
+        text-align: center;
+        font-family: "Oswald";
+    }
+
+    #better-suggestion-tips{
+        font-weight: 100;
+        font-size: 22px;
+        text-align: center ;
+        color: rgb(135, 135, 135);
+        width: fit-content;
+        margin: 0px 20px 38px 20px;
+    }
+
+    #take-quiz-again{
+        color: white;
+        border: none;
+        background-color: #F6C90E;
+        color: black;
+
+        font-family: "Roboto Mono";
+        font-weight: 600;
+        font-size: 16px;
+
+        width: 50%;
+        min-width: 280px;
+        height: 42px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    #disclaimer{
+        color: rgb(92, 92, 92);
+        text-align: center;
+        font-family: "Roboto Mono";
+        margin-bottom: 30px;
+        font-size: 10px;
+    }
+
 </style>
