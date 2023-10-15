@@ -182,6 +182,14 @@
         overflow-x: scroll;
     }
 
+    @media (min-width: 718px){
+        .suggested-items-container{
+            overflow-x: visible;
+            justify-content: center;
+        }
+    }
+    
+
     .suggested-item{
         color: white;
         display: flex;
@@ -215,6 +223,11 @@
         font-weight: 600;
         font-family: "Roboto Mono";
         font-size: 13px;
+
+        /*Glow effect*/
+        -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
+        -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+        box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     }
 
     .buy-link:hover{
@@ -275,6 +288,11 @@
         height: 42px;
         border-radius: 10px;
         margin-bottom: 10px;
+
+        /*Glow effect*/
+        -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
+        -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+        box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     }
 
     #disclaimer{

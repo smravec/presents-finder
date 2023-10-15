@@ -1,6 +1,6 @@
 <script>
     
-    let Quiz = [["Question1"],[["Answer to question",false],['Another answer to same question',false]],["Question2"],[["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false]]]
+    let Quiz = [["Your budget"],[["Around 5",false],['Another answer to same question',false]],["Question2"],[["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false]]]
     let CurrentQuestion = 0
 
     let HowMuchAnswersSelected = 0
