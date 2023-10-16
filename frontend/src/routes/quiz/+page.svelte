@@ -1,13 +1,24 @@
 <script>
     
-    let Quiz = [["Your budget"],[["Around 5",false],['Another answer to same question',false]],["Question2"],[["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false],["answer2",false]]]
+
+    let Quiz = [
+        // ["Question", true/false able to pick only one] 
+        ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
+        ["Their gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
+        ["Your gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
+        ["Physical activities they enjoy?",false],[["Male",false],["Female",false],["None",false]],
+        ["Mental challenges they enjoy?",false],[["Involving physical activity",false],["Involving mental activity",false],["None",false]],
+        ["Occasion?",true],[["Birthday",false],["Christmas",false],["Easter",false],["Anniversary",false],["Nameday",false],["Not relevant",false]]
+    ]
     let CurrentQuestion = 0
 
     let HowMuchAnswersSelected = 0
 
+    let IndexLastAnswer = -1
+
     //TODO on this page
     /*
-    - Finish the design
+    - Add pick only one answer functionality
     - Add functionality to the buttons 
     */
 
@@ -15,20 +26,26 @@
 
 <main>
     
-    <div id="question">{Quiz[CurrentQuestion]}</div>
+    <div id="question">{@html Quiz[CurrentQuestion][0]}</div>
     
         <div id="answer-container">
-            {#each Quiz[CurrentQuestion + 1] as Answer }
+            {#each Quiz[CurrentQuestion + 1] as Answer, index }
                 <button 
                 id={Answer[1] ? "answer-selected" : "answer"}
                 on:click={()=>{
-                    if(Answer[1] === false){
+                    if(Answer[1] === false ){
+                        if(Quiz[CurrentQuestion][1] === true && IndexLastAnswer > -1 ){
+                            Quiz[CurrentQuestion + 1][IndexLastAnswer][1] = false
+                            HowMuchAnswersSelected -= 1
+                        }
                         HowMuchAnswersSelected += 1
+                        IndexLastAnswer = index
                         Answer[1] = true
                     }
-                    else{
+                    else if(Answer[1] === true){
                         HowMuchAnswersSelected -= 1
                         Answer[1] = false
+                        IndexLastAnswer = -1
                     }
                 }}>
                     {Answer[0]}
@@ -65,6 +82,7 @@
     color: white;
     margin-top: 18px;
     font-size: 28px;
+    text-align: center;
 }
 
 #answer-container{
