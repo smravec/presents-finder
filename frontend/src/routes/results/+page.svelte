@@ -283,6 +283,7 @@
         font-weight: 600;
         font-size: 16px;
 
+        cursor: pointer;
         width: 50%;
         min-width: 280px;
         height: 42px;

@@ -58,7 +58,7 @@
     id={HowMuchAnswersSelected > 0 ? "submit" : "disabled-submit"}
     on:click={()=>{
     if(CurrentQuestion + 2 <= Quiz.length - 1)
-    {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = false}
+    {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = 0;IndexLastAnswer=-1}
     else{
         window.location = "/results"
     }}}>
