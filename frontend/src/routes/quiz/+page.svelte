@@ -2,7 +2,7 @@
     
 
     let Quiz = [
-        // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] ...
+        // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] 21...
         ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
         ["Their gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
         ["Your gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
