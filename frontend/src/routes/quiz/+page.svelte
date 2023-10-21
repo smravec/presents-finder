@@ -2,13 +2,45 @@
     
 
     let Quiz = [
-        // ["Question", true/false able to pick only one] 
+        // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] ...
         ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
         ["Their gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
         ["Your gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
-        ["Physical activities they enjoy?",false],[["Male",false],["Female",false],["None",false]],
-        ["Mental challenges they enjoy?",false],[["Involving physical activity",false],["Involving mental activity",false],["None",false]],
-        ["Occasion?",true],[["Birthday",false],["Christmas",false],["Easter",false],["Anniversary",false],["Nameday",false],["Not relevant",false]]
+        ["Should the gift be more practical or enjoyable?", true],[["More Practical", false],["More Enjoyable", false],["No Preference", false]],
+        
+        //Longer questions
+        ["What type of physical activities do they enjoy?<br/>(Pick all that apply)", false],
+        [["Team Sports (e.g., Football, Hockey)", false],
+        ["Cycling", false],
+        ["Skateboarding", false],
+        ["Adrenaline Sports (e.g., Skydiving, Bungee Jumping)", false],
+        ["Running", false],
+        ["Hands-on Projects (e.g., Tinkering, DIY, Woodworking)", false],
+        ["Outdoor Activities (e.g., Hiking, Gardening)", false],
+        ["Swimming", false],
+        ["Racquet Sports (e.g., Tennis, Ping Pong)", false],
+        ["Fitness and Exercise", false],
+        ["Other/None", false]],
+        
+        ["What are their intellectual or creative hobbies?<br/>(Pick all that apply)", false],
+        [["Reading (e.g., Fiction, Non-fiction)", false],
+        ["Gaming (e.g., Board Games, Video Games)", false],
+        ["Anime/Manga", false],
+        ["Artistic Activities (e.g., Drawing, Painting, Crafting)", false],
+        ["Tech and Gadgets", false],
+        ["Puzzle Solving", false],
+        ["Photography", false],
+        ["Media Consumption (e.g., Movies, TV Shows, Music, Podcasts)", false],
+        ["Cooking or Baking", false],
+        ["Other/None", false]],
+
+        ["What's the occasion?", true],
+        [["Birthday", false],
+        ["Christmas", false],
+        ["Easter", false],
+        ["Anniversary", false],
+        ["Nameday", false],
+        ["Other/No Specific Occasion", false]]
     ]
     let CurrentQuestion = 0
 
@@ -18,8 +50,7 @@
 
     //TODO on this page
     /*
-    - Add pick only one answer functionality
-    - Add functionality to the buttons 
+    - Add submit quiz answers functionality 
     */
 
 </script>
@@ -128,6 +159,7 @@
 
     padding: 2px 20px 2px 20px;
     margin-top: 20px;
+    margin-bottom: 45px;
     
     min-width: 20vw;
     min-width: 140px;
@@ -144,7 +176,6 @@
     -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
 }
-
 
 #disabled-submit{
     background-color: rgb(27, 27, 27);
