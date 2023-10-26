@@ -3,6 +3,15 @@
     import MdAttachMoney from 'svelte-icons/md/MdAttachMoney.svelte'
     import MdFitnessCenter from 'svelte-icons/md/MdFitnessCenter.svelte'
 
+    import {MvpAnalyze} from '$lib/mvp-analyse.js'
+    import {onMount} from 'svelte'
+
+    onMount(async()=>{
+        MvpAnalyze("test")
+    })
+
+
+
     let items = ["Sora shimano disc brakes", "Tiagra shimano disc brakes", "Grx shimano disc brakes"]
 
     //TODO on this page

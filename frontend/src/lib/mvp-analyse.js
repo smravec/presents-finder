@@ -1,8 +1,9 @@
-// Get mpv db and analyse data from there based on user answers
 
+import { MvpData } from "./mvp-db"
 
-function MvpAnalyze(answers){
-    let results = []
+export function MvpAnalyze(answers){
+    //    let results = []
+    console.log(MvpData)
 
-    return results
+    //return results
 }
