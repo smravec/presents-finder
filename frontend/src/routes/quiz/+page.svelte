@@ -86,7 +86,7 @@
     
     <button 
     disabled={HowMuchAnswersSelected > 0 ? false : true}
-    id={HowMuchAnswersSelected > 0 ? "submit" : "disabled-submit"}
+    id="submit"
     on:click={()=>{
     if(CurrentQuestion + 2 <= Quiz.length - 1)
     {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = 0;IndexLastAnswer=-1}
@@ -103,7 +103,7 @@
 </main>
 
 <style>
-    main{
+main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,8 +135,11 @@
 
     font-family: "Roboto Mono";
 
-    cursor: pointer;
     color:white;
+}
+
+#answer:hover, #answer-selected:hover{
+    cursor: pointer;
 }
 
 #answer-selected{    
@@ -148,7 +151,7 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
-#submit, #disabled-submit{
+#submit, #submit:disabled{
     border: none;
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
@@ -164,8 +167,6 @@
     min-width: 20vw;
     min-width: 140px;
 
-    cursor: pointer;
-
     background-color: #F6C90E;
     color: rgb(29, 29, 29);
 
@@ -177,17 +178,23 @@
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
 }
 
-#disabled-submit{
+#submit:hover{
+    cursor: pointer;
+}
+
+#submit:disabled{
     background-color: rgb(27, 27, 27);
     border: 1px solid rgb(32, 32, 32);
     color: rgb(42, 42, 42);
-
-    cursor: default;
 
      /*Glow effect*/
     -webkit-box-shadow:none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+#submit:disabled{
+    cursor: not-allowed;
 }
 
 </style>

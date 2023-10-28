@@ -104,8 +104,6 @@ main{
     margin-top: 40px;
     margin-bottom: 100px;
     
-    cursor: pointer;
-
     background-color: #F6C90E;
     color: rgb(29, 29, 29);
     
@@ -113,6 +111,10 @@ main{
     -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
     -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+}
+
+#start:hover{
+    cursor: pointer;
 }
 
 #gift-icon{

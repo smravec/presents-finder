@@ -198,7 +198,6 @@
         }
     }
     
-
     .suggested-item{
         color: white;
         display: flex;
@@ -292,7 +291,6 @@
         font-weight: 600;
         font-size: 16px;
 
-        cursor: pointer;
         width: 50%;
         min-width: 280px;
         height: 42px;
@@ -303,6 +301,10 @@
         -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
         -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
         box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+    }
+
+    #take-quiz-again:hover{
+        cursor: pointer;
     }
 
     #disclaimer{
