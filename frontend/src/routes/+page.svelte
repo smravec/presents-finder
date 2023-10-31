@@ -39,18 +39,25 @@
         }
     }
 
-    const AnimationLoop = setInterval(()=>{
+    function MainLoop(){
         Delete_Word(words_to_cycle[current_word_index].length)
-        
         setTimeout(()=>{
             current_word_index += 1
             if(current_word_index + 1 > words_to_cycle.length ){
                 current_word_index = 0
             }
+            setTimeout(()=>{
+                MainLoop()
+            },(words_to_cycle[current_word_index].length * 250 + 4000) )
             Type_Word(1)
         },words_to_cycle[current_word_index].length * 100 + 400)
     }
-    ,8000)
+
+    //Main Loop
+    setTimeout(()=>{
+        MainLoop()
+    }
+    ,2000)
 </script>
 
 <main>    
@@ -67,7 +74,7 @@
     <div id="description1">
         Ai tool that helps you find the perfect present
         <span id="animation-container">
-            for your <span id="animation"> {init_word} <span id="cursor"></span></span>
+            for your <br/> <span id="animation"> {init_word} <span id="cursor"></span></span>
         </span>
     </div>
 
