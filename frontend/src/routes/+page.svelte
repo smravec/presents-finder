@@ -7,12 +7,51 @@
     //TODO on this page
     /*
     - Make it responsive for desktop
-    - Make the animation for the word friend which retypes itself into other words
     - Add on load animations to other elements
     */
 
-</script>
+    //Animation
+    const words_to_cycle = ["friend","relative","partner","neighbor","kid","colleague"]
+    let init_word = words_to_cycle[0]
+    let current_word_index = 0
 
+    function Type_Word(word_len){
+        if(word_len === words_to_cycle[current_word_index].length){
+            init_word = words_to_cycle[current_word_index]
+        }
+        else{
+            init_word = words_to_cycle[current_word_index].slice(0,word_len)
+            setTimeout(()=>{
+                Type_Word(word_len + 1)
+            },250)
+        }
+    }
+    
+    function Delete_Word(word_len){
+        if(word_len === 1){
+            init_word = ""
+        }
+        else{
+            init_word = init_word.slice(0,word_len -1 )
+            setTimeout(()=>{
+                Delete_Word(word_len - 1)
+            },100)
+        }
+    }
+
+    const AnimationLoop = setInterval(()=>{
+        Delete_Word(words_to_cycle[current_word_index].length)
+        
+        setTimeout(()=>{
+            current_word_index += 1
+            if(current_word_index + 1 > words_to_cycle.length ){
+                current_word_index = 0
+            }
+            Type_Word(1)
+        },words_to_cycle[current_word_index].length * 100 + 400)
+    }
+    ,8000)
+</script>
 
 <main>    
     
@@ -27,8 +66,8 @@
 
     <div id="description1">
         Ai tool that helps you find the perfect present
-        <span id="animation">
-            for your friend
+        <span id="animation-container">
+            for your <span id="animation"> {init_word} <span id="cursor"></span></span>
         </span>
     </div>
 
@@ -156,12 +195,32 @@ main{
     margin: 0px 20px 30px 20px;
 }
 
-#animation{
+#animation-container{
     font-size: 33px;
     font-weight: 400;
     color: rgb(255, 255, 255);
-
 }
+
+#animation{
+    white-space: nowrap;
+}
+
+#cursor {
+    display: inline-block;
+    width: 3px;
+    height: 28px;
+    background-color: rgb(225, 225, 225);
+    margin-left: -10px;
+    margin-bottom: -2px;
+    animation: blink 1500ms steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 
 #title2{
     font-family: "Oswald";

@@ -100,6 +100,5 @@ export function MvpAnalyze(answers){
         : results[index];
     }
     
-    console.log(results)
     return results
 }

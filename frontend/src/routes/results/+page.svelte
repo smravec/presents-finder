@@ -20,24 +20,18 @@
         }
         //Analyze quiz answers
         else{
-            console.log("analyzing...")
             results = MvpAnalyze($Quiz)
-            // items_5 = results[0]
-            // items_10 = results[1]
-            // items_20 = results[2]
-            // items_50 = results[3]
+            items_5 = results[0]
+            items_10 = results[1]
+            items_20 = results[2]
+            items_50 = results[3]
         }
     })
 
-
-    //let items = ["Sora shimano disc brakes", "Tiagra shimano disc brakes", "Grx shimano disc brakes"]
-
     //TODO on this page
     /*
-    - Give functionality to the buttons
     - Make a nice loading animation when switching from quiz route
     */
-
 </script>
 
 <main>
@@ -62,10 +56,10 @@
             <MdFitnessCenter/>
         </div>
         <div class="item-name">
-            {item}
+            {item[0]}
         </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
-            Buy on Amazon
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+            Buy on<br/> Amazon
         </button>
     </div>
     {/each}
@@ -83,10 +77,10 @@
             <MdFitnessCenter/>
         </div>
         <div class="item-name">
-            {item}
+            {item[0]}
         </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
-            Buy on Amazon
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+            Buy on<br/> Amazon
         </button>
     </div>
     {/each}
@@ -104,10 +98,10 @@
             <MdFitnessCenter/>
         </div>
         <div class="item-name">
-            {item}
+            {item[0]}
         </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
-            Buy on Amazon
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+            Buy on<br/> Amazon
         </button>
     </div>
     {/each}
@@ -125,10 +119,10 @@
             <MdFitnessCenter/>
         </div>
         <div class="item-name">
-            {item}
+            {item[0]}
         </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.com", '_blank');}}>
-            Buy on Amazon
+        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+            Buy on<br/> Amazon
         </button>
     </div>
     {/each}
@@ -260,8 +254,8 @@
 
     .item-name{
         text-align: center;
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
         height: 35px;
         font-family: "Roboto";
     }
