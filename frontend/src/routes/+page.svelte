@@ -111,7 +111,7 @@
                     <MdChatBubbleOutline/>
                 </div>
                 <div id="num-of-questions">
-                    6 questions
+                    5 questions
                 </div>
             </div>
             

@@ -131,7 +131,8 @@
     <div id="footer">
         <div id="better-suggestions">Want better suggestions?</div>
         <div id="better-suggestion-tips">
-            Dummy text on how to get better suggestions random words from now on to fill the space and make it the length
+            Try to really select as much answers as possible in each question to greatly improve the quality of results.
+            The algorithm outputs different suggestions each time, so retaking the quiz even with same answers you can explore more and potentially better answers.
         </div>
         <button
         id="take-quiz-again" 
