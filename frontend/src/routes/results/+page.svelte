@@ -3,23 +3,39 @@
     import MdAttachMoney from 'svelte-icons/md/MdAttachMoney.svelte'
     import MdFitnessCenter from 'svelte-icons/md/MdFitnessCenter.svelte'
 
-    import {MvpAnalyze} from '$lib/mvp-analyse.js'
-    import {onMount} from 'svelte'
+    import {MvpAnalyze} from '$lib/mvp-analyze.js'
+    import {Quiz} from '$lib/mvp-analyze.js'
+    import {onMount} from "svelte"
 
-    onMount(async()=>{
-        MvpAnalyze("test")
+    let results = []
+    let items_5 = []
+    let items_10 = []
+    let items_20 = []
+    let items_50 = []
+
+    onMount(()=>{
+        //If quiz is not answered yet
+        if( $Quiz.length === 0 ){
+            window.location.replace("/quiz")
+        }
+        //Analyze quiz answers
+        else{
+            console.log("analyzing...")
+            results = MvpAnalyze($Quiz)
+            // items_5 = results[0]
+            // items_10 = results[1]
+            // items_20 = results[2]
+            // items_50 = results[3]
+        }
     })
 
 
-
-    let items = ["Sora shimano disc brakes", "Tiagra shimano disc brakes", "Grx shimano disc brakes"]
+    //let items = ["Sora shimano disc brakes", "Tiagra shimano disc brakes", "Grx shimano disc brakes"]
 
     //TODO on this page
     /*
-    - Finish the design
     - Give functionality to the buttons
     - Make a nice loading animation when switching from quiz route
-    - In making it desktop responsive remove overflow x and and align self center on suggested items container
     */
 
 </script>
@@ -40,7 +56,7 @@
         </p>
     </div>
     <div class="suggested-items-container">
-    {#each items as item }
+    {#each items_5 as item }
     <div class="suggested-item">
         <div class="item-type">
             <MdFitnessCenter/>
@@ -61,7 +77,7 @@
         </p>
     </div>
     <div class="suggested-items-container">
-    {#each items as item }
+    {#each items_10 as item }
     <div class="suggested-item">
         <div class="item-type">
             <MdFitnessCenter/>
@@ -82,7 +98,7 @@
         </p>
     </div>
     <div class="suggested-items-container">
-    {#each items as item }
+    {#each items_20 as item }
     <div class="suggested-item">
         <div class="item-type">
             <MdFitnessCenter/>
@@ -103,7 +119,7 @@
         </p>
     </div>
     <div class="suggested-items-container">
-    {#each items as item }
+    {#each items_50 as item }
     <div class="suggested-item">
         <div class="item-type">
             <MdFitnessCenter/>

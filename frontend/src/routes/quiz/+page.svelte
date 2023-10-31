@@ -1,72 +1,63 @@
 <script>
+    import {Quiz} from '$lib/mvp-analyze.js'
+    import { goto } from '$app/navigation';
     
-
-    let Quiz = [
-        // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] 21...
-        ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
-        ["Their gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
-        ["Your gender?",true],[["Male",false],["Female",false],["Not relevant",false]],
-        ["Should the gift be more practical or enjoyable?", true],[["More Practical", false],["More Enjoyable", false],["No Preference", false]],
-        
-        //Longer questions
-        ["What type of physical activities do they enjoy?<br/>(Pick all that apply)", false],
-        [["Team Sports (e.g., Football, Hockey)", false],
-        ["Cycling", false],
-        ["Skateboarding", false],
-        ["Adrenaline Sports (e.g., Skydiving, Bungee Jumping)", false],
-        ["Running", false],
-        ["Hands-on Projects (e.g., Tinkering, DIY, Woodworking)", false],
-        ["Outdoor Activities (e.g., Hiking, Gardening)", false],
-        ["Swimming", false],
-        ["Racquet Sports (e.g., Tennis, Ping Pong)", false],
-        ["Fitness and Exercise", false],
-        ["Other/None", false]],
-        
-        ["What are their intellectual or creative hobbies?<br/>(Pick all that apply)", false],
-        [["Reading (e.g., Fiction, Non-fiction)", false],
-        ["Gaming (e.g., Board Games, Video Games)", false],
-        ["Anime/Manga", false],
-        ["Artistic Activities (e.g., Drawing, Painting, Crafting)", false],
-        ["Tech and Gadgets", false],
-        ["Puzzle Solving", false],
-        ["Photography", false],
-        ["Media Consumption (e.g., Movies, TV Shows, Music, Podcasts)", false],
-        ["Cooking or Baking", false],
-        ["Other/None", false]],
-
-        ["What's the occasion?", true],
-        [["Birthday", false],
-        ["Christmas", false],
-        ["Easter", false],
-        ["Anniversary", false],
-        ["Nameday", false],
-        ["Other/No Specific Occasion", false]]
-    ]
     let CurrentQuestion = 0
-
     let HowMuchAnswersSelected = 0
-
     let IndexLastAnswer = -1
+    let TempQuiz = [
+            // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] 21...
+            ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
+            ["Should the gift be more practical or enjoyable?", true],[["More Practical", false],["More Enjoyable", false],["No Preference", false]],
+            
+            //Longer questions
+            ["What type of physical activities do they enjoy?<br/>(Pick all that apply)", false],
+            [["Team Sports (e.g., Football, Hockey)", false],
+            ["Cycling", false],
+            ["Skateboarding", false],
+            ["Adrenaline Sports (e.g., Skydiving, Bungee Jumping)", false],
+            ["Running", false],
+            ["Hands-on Projects (e.g., Tinkering, DIY, Woodworking)", false],
+            ["Outdoor Activities (e.g., Hiking, Gardening)", false],
+            ["Swimming", false],
+            ["Racquet Sports (e.g., Tennis, Ping Pong)", false],
+            ["Fitness and Exercise", false],
+            ["Other/None", false]],
+            
+            ["What are their intellectual or creative hobbies?<br/>(Pick all that apply)", false],
+            [["Reading (e.g., Fiction, Non-fiction)", false],
+            ["Gaming (e.g., Board Games, Video Games)", false],
+            ["Anime/Manga", false],
+            ["Artistic Activities (e.g., Drawing, Painting, Crafting)", false],
+            ["Tech and Gadgets", false],
+            ["Puzzle Solving", false],
+            ["Photography", false],
+            ["Media Consumption (e.g., Movies, TV Shows, Music, Podcasts)", false],
+            ["Cooking or Baking", false],
+            ["Other/None", false]],
 
-    //TODO on this page
-    /*
-    - Add submit quiz answers functionality 
-    */
-
+            ["What's the occasion?", true],
+            [["Birthday", false],
+            ["Christmas", false],
+            ["Easter", false],
+            ["Anniversary", false],
+            ["Nameday", false],
+            ["Other/No Specific Occasion", false]]
+    ]
 </script>
 
 <main>
     
-    <div id="question">{@html Quiz[CurrentQuestion][0]}</div>
+    <div id="question">{@html TempQuiz[CurrentQuestion][0]}</div>
     
         <div id="answer-container">
-            {#each Quiz[CurrentQuestion + 1] as Answer, index }
+            {#each TempQuiz[CurrentQuestion + 1] as Answer, index }
                 <button 
                 id={Answer[1] ? "answer-selected" : "answer"}
                 on:click={()=>{
                     if(Answer[1] === false ){
-                        if(Quiz[CurrentQuestion][1] === true && IndexLastAnswer > -1 ){
-                            Quiz[CurrentQuestion + 1][IndexLastAnswer][1] = false
+                        if(TempQuiz[CurrentQuestion][1] === true && IndexLastAnswer > -1 ){
+                            TempQuiz[CurrentQuestion + 1][IndexLastAnswer][1] = false
                             HowMuchAnswersSelected -= 1
                         }
                         HowMuchAnswersSelected += 1
@@ -88,12 +79,13 @@
     disabled={HowMuchAnswersSelected > 0 ? false : true}
     id="submit"
     on:click={()=>{
-    if(CurrentQuestion + 2 <= Quiz.length - 1)
+    if(CurrentQuestion + 2 <= TempQuiz.length - 1)
     {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = 0;IndexLastAnswer=-1}
     else{
-        window.location = "/results"
+        Quiz.set(TempQuiz)
+        goto("/results")
     }}}>
-        {#if CurrentQuestion === Quiz.length - 2  }
+        {#if CurrentQuestion === TempQuiz.length - 2  }
             Evaluate
         {:else}
             Next
@@ -187,14 +179,12 @@ main{
     border: 1px solid rgb(32, 32, 32);
     color: rgb(42, 42, 42);
 
+    cursor: default;
+
      /*Glow effect*/
     -webkit-box-shadow:none;
     -moz-box-shadow: none;
     box-shadow: none;
-}
-
-#submit:disabled{
-    cursor: not-allowed;
 }
 
 </style>
