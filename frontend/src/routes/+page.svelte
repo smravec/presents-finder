@@ -14,22 +14,27 @@
     const words_to_cycle = ["friend","relative","partner","neighbor","kid","colleague"]
     let init_word = words_to_cycle[0]
     let current_word_index = 0
+    let deleting_or_typing = false
 
     function Type_Word(word_len){
+        deleting_or_typing = true
         if(word_len === words_to_cycle[current_word_index].length){
             init_word = words_to_cycle[current_word_index]
+            deleting_or_typing = false
         }
         else{
             init_word = words_to_cycle[current_word_index].slice(0,word_len)
             setTimeout(()=>{
                 Type_Word(word_len + 1)
-            },250)
+            },(100 + (Math.floor(Math.random() * 5) + 1) * 30))
         }
     }
     
     function Delete_Word(word_len){
+        deleting_or_typing = true
         if(word_len === 1){
             init_word = ""
+            deleting_or_typing = false
         }
         else{
             init_word = init_word.slice(0,word_len -1 )
@@ -50,7 +55,7 @@
                 MainLoop()
             },(words_to_cycle[current_word_index].length * 250 + 4000) )
             Type_Word(1)
-        },words_to_cycle[current_word_index].length * 100 + 400)
+        },words_to_cycle[current_word_index].length * 100 + 500)
     }
 
     //Main Loop
@@ -74,7 +79,7 @@
     <div id="description1">
         Ai tool that helps you find the perfect present
         <span id="animation-container">
-            for your <br/> <span id="animation"> {init_word} <span id="cursor"></span></span>
+            for your <br/> <span id="animation"> {init_word} <span id={deleting_or_typing ?"cursor-deleting-typing":"cursor"}></span></span>
         </span>
     </div>
 
@@ -212,13 +217,17 @@ main{
     white-space: nowrap;
 }
 
-#cursor {
+#cursor,#cursor-deleting-typing {
     display: inline-block;
     width: 3px;
     height: 28px;
     background-color: rgb(225, 225, 225);
     margin-left: -10px;
     margin-bottom: -2px;
+    user-select: none;
+}
+
+#cursor{
     animation: blink 1500ms steps(1) infinite;
 }
 
