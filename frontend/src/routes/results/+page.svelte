@@ -1,6 +1,7 @@
 <script>
     import MdFitnessCenter from 'svelte-icons/md/MdFitnessCenter.svelte'
 
+    import GoGift from 'svelte-icons/go/GoGift.svelte'
     import {MvpAnalyze} from '$lib/mvp-analyze.js'
     import {Quiz} from '$lib/mvp-analyze.js'
     import {onMount} from "svelte"
@@ -62,7 +63,7 @@
             on:click={()=>{
                 item[3] = true
             }}>
-                <MdFitnessCenter/>
+                <GoGift/>
             </button>
             <div class="item-name">
                 {item[0]}
@@ -79,7 +80,6 @@
                 {item[1]}
             </button>
         {/if}
-        
     </div>
     {/each}
     </div>
@@ -92,15 +92,29 @@
     <div class="suggested-items-container">
     {#each items_10 as item }
     <div class="suggested-item">
-        <div class="item-type">
-            <MdFitnessCenter/>
-        </div>
-        <div class="item-name">
-            {item[0]}
-        </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
-            Buy on<br/> Amazon
-        </button>
+        {#if item[3] == false}
+            <button 
+            class="item-type"
+            on:click={()=>{
+                item[3] = true
+            }}>
+                <GoGift/>
+            </button>
+            <div class="item-name">
+                {item[0]}
+            </div>
+            <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+                Buy  on<br/> Amazon
+            </button>
+        {:else}
+            <button
+            class="item-description"
+            on:click={()=>{
+                item[3] = false
+            }}>
+                {item[1]}
+            </button>
+        {/if}
     </div>
     {/each}
     </div>
@@ -113,15 +127,29 @@
     <div class="suggested-items-container">
     {#each items_20 as item }
     <div class="suggested-item">
-        <div class="item-type">
-            <MdFitnessCenter/>
-        </div>
-        <div class="item-name">
-            {item[0]}
-        </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
-            Buy on<br/> Amazon
-        </button>
+        {#if item[3] == false}
+            <button 
+            class="item-type"
+            on:click={()=>{
+                item[3] = true
+            }}>
+                <GoGift/>
+            </button>
+            <div class="item-name">
+                {item[0]}
+            </div>
+            <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+                Buy  on<br/> Amazon
+            </button>
+        {:else}
+            <button
+            class="item-description"
+            on:click={()=>{
+                item[3] = false
+            }}>
+                {item[1]}
+            </button>
+        {/if}
     </div>
     {/each}
     </div>
@@ -134,15 +162,29 @@
     <div class="suggested-items-container">
     {#each items_50 as item }
     <div class="suggested-item">
-        <div class="item-type">
-            <MdFitnessCenter/>
-        </div>
-        <div class="item-name">
-            {item[0]}
-        </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
-            Buy on<br/> Amazon
-        </button>
+        {#if item[3] == false}
+            <button 
+            class="item-type"
+            on:click={()=>{
+                item[3] = true
+            }}>
+                <GoGift/>
+            </button>
+            <div class="item-name">
+                {item[0]}
+            </div>
+            <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+                Buy  on<br/> Amazon
+            </button>
+        {:else}
+            <button
+            class="item-description"
+            on:click={()=>{
+                item[3] = false
+            }}>
+                {item[1]}
+            </button>
+        {/if}
     </div>
     {/each}
     </div>
@@ -339,7 +381,6 @@
     .item-type:hover{
         cursor: pointer;
         color: rgb(209, 209, 209);
-        border-radius: 10px;
     }
 
     .item-description{
@@ -354,6 +395,7 @@
 
     .item-description:hover{
         cursor: pointer;
+        color: rgb(209, 209, 209);
     }
 
     .buy-link{

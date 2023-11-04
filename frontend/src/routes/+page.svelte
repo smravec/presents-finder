@@ -4,96 +4,89 @@
     import MdChatBubbleOutline from 'svelte-icons/md/MdChatBubbleOutline.svelte'
     import GoGift from 'svelte-icons/go/GoGift.svelte'
 
-    //TODO on this page
-    /*
-    - Make it responsive for desktop
-    - Add on load animations to other elements
-    */
-
     //Animation
     import { onMount, onDestroy } from 'svelte';
-  import { browser } from '$app/environment';
+    import { browser } from '$app/environment';
 
-  const words_to_cycle = ["friend", "relative", "partner", "neighbor", "kid", "colleague"];
-  let init_word = words_to_cycle[0];
-  let current_word_index = 0;
-  let deleting_or_typing = false;
-  let interval;
+    const words_to_cycle = ["friend", "relative", "partner", "neighbor", "kid", "colleague"];
+    let init_word = words_to_cycle[0];
+    let current_word_index = 0;
+    let deleting_or_typing = false;
+    let interval;
 
-  function Type_Word(word_len) {
-    deleting_or_typing = true;
-    if (word_len === words_to_cycle[current_word_index].length) {
-      init_word = words_to_cycle[current_word_index];
-      deleting_or_typing = false;
-    } else {
-      init_word = words_to_cycle[current_word_index].slice(0, word_len);
-      setTimeout(() => {
-        Type_Word(word_len + 1);
-      }, (100 + (Math.floor(Math.random() * 5) + 1) * 30));
+    function Type_Word(word_len) {
+        deleting_or_typing = true;
+        if (word_len === words_to_cycle[current_word_index].length) {
+        init_word = words_to_cycle[current_word_index];
+        deleting_or_typing = false;
+        } else {
+        init_word = words_to_cycle[current_word_index].slice(0, word_len);
+        setTimeout(() => {
+            Type_Word(word_len + 1);
+        }, (100 + (Math.floor(Math.random() * 5) + 1) * 30));
+        }
     }
-  }
 
-  function Delete_Word(word_len) {
-    deleting_or_typing = true;
-    if (word_len === 1) {
-      init_word = "";
-      deleting_or_typing = false;
-    } else {
-      init_word = init_word.slice(0, word_len - 1);
-      setTimeout(() => {
-        Delete_Word(word_len - 1);
-      }, 100);
+    function Delete_Word(word_len) {
+        deleting_or_typing = true;
+        if (word_len === 1) {
+        init_word = "";
+        deleting_or_typing = false;
+        } else {
+        init_word = init_word.slice(0, word_len - 1);
+        setTimeout(() => {
+            Delete_Word(word_len - 1);
+        }, 100);
+        }
     }
-  }
 
-  function MainLoop() {
-    Delete_Word(words_to_cycle[current_word_index].length);
-    setTimeout(() => {
-      current_word_index += 1;
-      if (current_word_index >= words_to_cycle.length) {
-        current_word_index = 0;
-      }
-      clearInterval(interval);
-      interval = setInterval(MainLoop, words_to_cycle[current_word_index].length * 250 + 4000);
-      Type_Word(1);
-    }, words_to_cycle[current_word_index].length * 100 + 500);
-  }
-
-  // Start typing animation when the window is focused
-  function startAnimation() {
-    if (!interval) {
-      interval = setInterval(MainLoop, 2000);
+    function MainLoop() {
+        Delete_Word(words_to_cycle[current_word_index].length);
+        setTimeout(() => {
+        current_word_index += 1;
+        if (current_word_index >= words_to_cycle.length) {
+            current_word_index = 0;
+        }
+        clearInterval(interval);
+        interval = setInterval(MainLoop, words_to_cycle[current_word_index].length * 250 + 4000);
+        Type_Word(1);
+        }, words_to_cycle[current_word_index].length * 100 + 500);
     }
-  }
 
-  // Stop typing animation when the window is not focused
-  function stopAnimation() {
-    clearInterval(interval);
-    interval = null;
-  }
-
-  onMount(() => {
-    if (browser) {
-      // Start animation if the window is already focused
-      if (document.hasFocus()) {
-        startAnimation();
-      }
-
-      // Listen for focus and blur events
-      window.addEventListener('focus', startAnimation);
-      window.addEventListener('blur', stopAnimation);
+    // Start typing animation when the window is focused
+    function startAnimation() {
+        if (!interval) {
+        interval = setInterval(MainLoop, 2000);
+        }
     }
-  });
 
-  onDestroy(() => {
-    if (browser) {
-      // Cleanup
-      stopAnimation();
-      window.removeEventListener('focus', startAnimation);
-      window.removeEventListener('blur', stopAnimation);
+    // Stop typing animation when the window is not focused
+    function stopAnimation() {
+        clearInterval(interval);
+        interval = null;
     }
-  });
 
+    onMount(() => {
+        if (browser) {
+        // Start animation if the window is already focused
+        if (document.hasFocus()) {
+            startAnimation();
+        }
+
+        // Listen for focus and blur events
+        window.addEventListener('focus', startAnimation);
+        window.addEventListener('blur', stopAnimation);
+        }
+    });
+
+    onDestroy(() => {
+        if (browser) {
+        // Cleanup
+        stopAnimation();
+        window.removeEventListener('focus', startAnimation);
+        window.removeEventListener('blur', stopAnimation);
+        }
+    });
 </script>
 
 <main>    
