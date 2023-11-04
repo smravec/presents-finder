@@ -74,7 +74,7 @@ export function MvpAnalyze(answers){
             }            
 
             if(fit === true){
-                const item_to_add = [MvpData[x][item][0],MvpData[x][item][1],MvpData[x][item][2]]
+                let item_to_add = [MvpData[x][item][0],MvpData[x][item][1],MvpData[x][item][2],false]
                 results[x].push(item_to_add)
             }   
         }        
@@ -100,5 +100,6 @@ export function MvpAnalyze(answers){
         : results[index];
     }
     
+    console.log(results)
     return results
 }

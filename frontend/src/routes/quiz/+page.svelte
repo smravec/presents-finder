@@ -124,6 +124,11 @@ main{
 
     animation: item-loading 350ms;
     animation-timing-function: ease-in;
+
+    border-bottom: 1px solid rgb(76, 76, 76);
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 @keyframes item-loading{

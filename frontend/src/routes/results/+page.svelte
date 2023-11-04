@@ -1,6 +1,4 @@
 <script>
-
-    import MdAttachMoney from 'svelte-icons/md/MdAttachMoney.svelte'
     import MdFitnessCenter from 'svelte-icons/md/MdFitnessCenter.svelte'
 
     import {MvpAnalyze} from '$lib/mvp-analyze.js'
@@ -58,15 +56,30 @@
     <div class="suggested-items-container">
     {#each items_5 as item }
     <div class="suggested-item">
-        <div class="item-type">
-            <MdFitnessCenter/>
-        </div>
-        <div class="item-name">
-            {item[0]}
-        </div>
-        <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
-            Buy on<br/> Amazon
-        </button>
+        {#if item[3] == false}
+            <button 
+            class="item-type"
+            on:click={()=>{
+                item[3] = true
+            }}>
+                <MdFitnessCenter/>
+            </button>
+            <div class="item-name">
+                {item[0]}
+            </div>
+            <button class="buy-link" on:click={()=>{window.open("https://amazon.de/s?k=" + item[0].replace(/\s/g, '+'), '_blank');}}>
+                Buy  on<br/> Amazon
+            </button>
+        {:else}
+            <button
+            class="item-description"
+            on:click={()=>{
+                item[3] = false
+            }}>
+                {item[1]}
+            </button>
+        {/if}
+        
     </div>
     {/each}
     </div>
@@ -304,16 +317,43 @@
         flex-direction: column;
         border: 1px solid white;
         border-radius: 10px;
-        min-width: 200px;
-        min-height: 150px;
+        width: 200px;
+        height: 190px;
 
         animation: item-loading 2200ms;
     }
 
     .item-type{
-        height: 70px;
+        background-color: transparent;
+        border: none;
+
+        font-size: 28px;
+        color: white;
+
+        height: 80px;
         padding: 10px;
         padding-bottom: 15px;
+        width: 200px;
+    }
+
+    .item-type:hover{
+        cursor: pointer;
+        color: rgb(209, 209, 209);
+        border-radius: 10px;
+    }
+
+    .item-description{
+        width: 200px;
+        height: 100%;
+        background-color: transparent;
+        color: white;
+        padding: 2px 10px 2px 10px;
+        font-size: 20px;
+        border: none;
+    }
+
+    .item-description:hover{
+        cursor: pointer;
     }
 
     .buy-link{
