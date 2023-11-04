@@ -44,25 +44,27 @@
         }
     }
 
-    function MainLoop(){
+    function MainLoop(interval){
         Delete_Word(words_to_cycle[current_word_index].length)
         setTimeout(()=>{
             current_word_index += 1
             if(current_word_index + 1 > words_to_cycle.length ){
                 current_word_index = 0
             }
-            setTimeout(()=>{
-                MainLoop()
-            },(words_to_cycle[current_word_index].length * 250 + 4000) )
+            clearInterval(interval)
+            interval = setInterval(function(){
+               MainLoop(interval)}
+                ,(words_to_cycle[current_word_index].length * 250 + 4000)
+            )
             Type_Word(1)
         },words_to_cycle[current_word_index].length * 100 + 500)
     }
 
     //Main Loop
-    setTimeout(()=>{
-        MainLoop()
-    }
-    ,2000)
+    let interval = setInterval(function(){
+        MainLoop(interval)}
+        ,2000
+    )
 </script>
 
 <main>    
