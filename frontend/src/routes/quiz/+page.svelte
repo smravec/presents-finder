@@ -52,7 +52,7 @@
     function scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // Optional: define the scrolling behavior
+      behavior: 'smooth'
     });
     }
 </script>
@@ -153,7 +153,7 @@ main{
 
 #answer, #answer-selected{
     -webkit-tap-highlight-color: transparent;
-
+    user-select: none;
     border: 1px solid rgb(60, 60, 60);
     background-color: rgb(34, 34, 34);
     border-radius: 7px;
@@ -200,7 +200,7 @@ main{
     border: none;
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
-
+    user-select: none;
     font-family: "Oswald";
     font-size: 28px;
     font-weight: 500;
