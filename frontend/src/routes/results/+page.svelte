@@ -13,6 +13,8 @@
     let items_20 = []
     let items_50 = []
 
+    let loading = false
+
     onMount(()=>{
         //If quiz is not answered yet
         if( $Quiz.length === 0 ){
@@ -20,6 +22,8 @@
         }
         //Analyze quiz answers
         else{
+            loading = true
+            setTimeout(()=>{loading=false},2000)
             results = MvpAnalyze($Quiz)
             items_5 = results[0]
             items_10 = results[1]
@@ -27,14 +31,16 @@
             items_50 = results[3]
         }
     })
-
-    //TODO on this page
-    /*
-    - Make a nice loading animation when switching from quiz route
-    */
 </script>
 
 <main>
+    {#if loading}
+    <div id ="loading-overlay">
+        <div id="spinner"></div>
+        <div id="analyzing">Analyzing your answers</div>
+    </div>
+    {/if}
+
     <div id="heading">
         Your Results
     </div>
@@ -131,8 +137,8 @@
     <div id="footer">
         <div id="better-suggestions">Want better suggestions?</div>
         <div id="better-suggestion-tips">
-            Try to really select as much answers as possible in each question to greatly improve the quality of results.
-            The algorithm outputs different suggestions each time, so retaking the quiz even with same answers you can explore more and potentially better answers.
+            Try to select as much answers as possible in each question to improve the quality of the results.
+            The algorithm outputs different suggestions each time, so retaking the quiz even with the same answers most of the time outputs different and potentially better suggestions.
         </div>
         <button
         id="take-quiz-again" 
@@ -151,6 +157,86 @@
         display: flex;
         flex-direction: column;
     }
+
+    #loading-overlay {
+        position: fixed; /* Use fixed instead of absolute to cover the whole page even when scrolled */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgb(21, 21, 21); /* Semi-transparent white background */
+        z-index: 9999; /* High z-index to make sure it's above everything else */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        animation: loading 1s;
+        animation-timing-function: ease-in;
+    }
+
+    @keyframes loading{
+        0%{
+            background: rgb(8, 8, 8);
+        }
+        100%{
+            background: rgb(21, 21, 21);
+        }
+    }
+
+    #spinner {
+        border: 5px solid #2a2a2a; /* Light grey */
+        border-top: 5px solid #F6C90E; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+        margin-top: -50px;
+    }
+
+    #analyzing{
+        margin-top: 20px;
+        font-size: 18px;
+        font-family: "Roboto Mono";
+        color: rgb(119, 119, 119);
+    }
+
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes item-loading {
+        0%{
+            color: transparent;
+        }
+
+        91%{
+            color: transparent;
+        }
+
+        100%{
+            background-color: transparent;
+        }
+    }
+
+    @keyframes flow {
+        0% {
+            opacity: 50%;
+            transform: translateX(-10px);
+        }
+
+        91% {
+            opacity: 50%;
+            transform: translateX(-10px);
+        }
+
+        100%{
+            opacity: 100%;
+            transform: translateX(0px);
+        }
+    }   
 
     #heading{
         margin-top: 20px;
@@ -182,7 +268,6 @@
         display: flex;
         justify-content: center;        
 
-
         border-bottom: 1px solid white;
     }
 
@@ -194,7 +279,9 @@
         border: 1px solid white;
         border-radius: 5px;
         padding: 10px;
-        
+
+        animation: flow 300ms;
+        animation-timing-function: ease-in;   
     }
 
     .suggested-items-container{
@@ -219,6 +306,8 @@
         border-radius: 10px;
         min-width: 200px;
         min-height: 150px;
+
+        animation: item-loading 2200ms;
     }
 
     .item-type{
@@ -251,6 +340,12 @@
 
     .buy-link:hover{
         cursor: pointer;
+
+        transition: 250ms;
+        /*Glow effect*/
+        -webkit-box-shadow:0px 0px 30px 8px rgba(255,238,46,0.33);
+        -moz-box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
+        box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
     }
 
     .item-name{
@@ -290,6 +385,9 @@
         color: rgb(135, 135, 135);
         width: fit-content;
         margin: 0px 20px 38px 20px;
+
+        animation: item-loading 2250ms;
+        animation-timing-function: ease-in;
     }
 
     #take-quiz-again{
@@ -316,6 +414,12 @@
 
     #take-quiz-again:hover{
         cursor: pointer;
+        transition: 250ms;
+
+        /*Glow effect*/
+        -webkit-box-shadow:0px 0px 30px 8px rgba(255,238,46,0.33);
+        -moz-box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
+        box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
     }
 
     #disclaimer{
@@ -325,5 +429,4 @@
         margin-bottom: 30px;
         font-size: 10px;
     }
-
 </style>

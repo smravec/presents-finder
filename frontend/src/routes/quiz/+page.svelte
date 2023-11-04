@@ -44,15 +44,27 @@
             ["Nameday", false],
             ["Other/No Specific Occasion", false]]
     ]
+
+    //Animation rerun fix
+    let triggerAnimation = 0;
+    
+    //Scrolling
+    function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Optional: define the scrolling behavior
+    });
+    }
 </script>
 
 <main>
-    
-    <div id="question">{@html TempQuiz[CurrentQuestion][0]}</div>
+    {#key CurrentQuestion}
+    <div id="question" key={triggerAnimation}> {@html TempQuiz[CurrentQuestion][0]}</div>
     
         <div id="answer-container">
             {#each TempQuiz[CurrentQuestion + 1] as Answer, index }
                 <button 
+                key={triggerAnimation}
                 id={Answer[1] ? "answer-selected" : "answer"}
                 on:click={()=>{
                     if(Answer[1] === false ){
@@ -80,7 +92,7 @@
     id="submit"
     on:click={()=>{
     if(CurrentQuestion + 2 <= TempQuiz.length - 1)
-    {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = 0;IndexLastAnswer=-1}
+    {CurrentQuestion = CurrentQuestion + 2;HowMuchAnswersSelected = 0;IndexLastAnswer=-1;triggerAnimation++;scrollToTop()}
     else{
         Quiz.set(TempQuiz)
         goto("/results")
@@ -92,6 +104,7 @@
         {/if}
         
     </button>
+    {/key}
 </main>
 
 <style>
@@ -106,6 +119,23 @@ main{
     margin-top: 18px;
     font-size: 28px;
     text-align: center;
+
+    user-select: none;
+
+    animation: item-loading 350ms;
+    animation-timing-function: ease-in;
+}
+
+@keyframes item-loading{
+    0%{
+        opacity: 0%;
+        transform: translateX(-10px);
+    }
+
+    100%{
+        opacity: 100%;
+        transform: translateX(0px);
+    }
 }
 
 #answer-container{
@@ -128,6 +158,22 @@ main{
     font-family: "Roboto Mono";
 
     color:white;
+
+    transition: 100ms;
+}
+
+#answer{
+    animation: text-loading 750ms;
+}
+
+@keyframes text-loading{
+    0%{
+        color: transparent;
+    }
+    
+    100%{
+        color: white;
+    }
 }
 
 #answer:hover, #answer-selected:hover{
@@ -138,6 +184,8 @@ main{
     background:  #F6C90E;    
     color: rgb(0, 0, 0);
     font-weight: 800;
+
+    transition: 250ms;
 
     border: 1px solid rgb(23, 23, 23);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
@@ -163,6 +211,8 @@ main{
     color: rgb(29, 29, 29);
 
     -webkit-tap-highlight-color: transparent;
+
+    transition: 250ms;
     
    /*Glow effect*/ 
     -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
@@ -172,12 +222,19 @@ main{
 
 #submit:hover{
     cursor: pointer;
+
+    /*Glow effect*/ 
+    -webkit-box-shadow:0px 0px 30px 8px rgba(255,238,46,0.33);
+    -moz-box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
+    box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
 }
 
 #submit:disabled{
     background-color: rgb(27, 27, 27);
     border: 1px solid rgb(32, 32, 32);
     color: rgb(42, 42, 42);
+
+    transition: 100ms;
 
     cursor: default;
 
@@ -186,5 +243,4 @@ main{
     -moz-box-shadow: none;
     box-shadow: none;
 }
-
 </style>

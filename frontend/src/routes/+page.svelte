@@ -11,60 +11,89 @@
     */
 
     //Animation
-    const words_to_cycle = ["friend","relative","partner","neighbor","kid","colleague"]
-    let init_word = words_to_cycle[0]
-    let current_word_index = 0
-    let deleting_or_typing = false
+    import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
-    function Type_Word(word_len){
-        deleting_or_typing = true
-        if(word_len === words_to_cycle[current_word_index].length){
-            init_word = words_to_cycle[current_word_index]
-            deleting_or_typing = false
-        }
-        else{
-            init_word = words_to_cycle[current_word_index].slice(0,word_len)
-            setTimeout(()=>{
-                Type_Word(word_len + 1)
-            },(100 + (Math.floor(Math.random() * 5) + 1) * 30))
-        }
-    }
-    
-    function Delete_Word(word_len){
-        deleting_or_typing = true
-        if(word_len === 1){
-            init_word = ""
-            deleting_or_typing = false
-        }
-        else{
-            init_word = init_word.slice(0,word_len -1 )
-            setTimeout(()=>{
-                Delete_Word(word_len - 1)
-            },100)
-        }
-    }
+  const words_to_cycle = ["friend", "relative", "partner", "neighbor", "kid", "colleague"];
+  let init_word = words_to_cycle[0];
+  let current_word_index = 0;
+  let deleting_or_typing = false;
+  let interval;
 
-    function MainLoop(interval){
-        Delete_Word(words_to_cycle[current_word_index].length)
-        setTimeout(()=>{
-            current_word_index += 1
-            if(current_word_index + 1 > words_to_cycle.length ){
-                current_word_index = 0
-            }
-            clearInterval(interval)
-            interval = setInterval(function(){
-               MainLoop(interval)}
-                ,(words_to_cycle[current_word_index].length * 250 + 4000)
-            )
-            Type_Word(1)
-        },words_to_cycle[current_word_index].length * 100 + 500)
+  function Type_Word(word_len) {
+    deleting_or_typing = true;
+    if (word_len === words_to_cycle[current_word_index].length) {
+      init_word = words_to_cycle[current_word_index];
+      deleting_or_typing = false;
+    } else {
+      init_word = words_to_cycle[current_word_index].slice(0, word_len);
+      setTimeout(() => {
+        Type_Word(word_len + 1);
+      }, (100 + (Math.floor(Math.random() * 5) + 1) * 30));
     }
+  }
 
-    //Main Loop
-    let interval = setInterval(function(){
-        MainLoop(interval)}
-        ,2000
-    )
+  function Delete_Word(word_len) {
+    deleting_or_typing = true;
+    if (word_len === 1) {
+      init_word = "";
+      deleting_or_typing = false;
+    } else {
+      init_word = init_word.slice(0, word_len - 1);
+      setTimeout(() => {
+        Delete_Word(word_len - 1);
+      }, 100);
+    }
+  }
+
+  function MainLoop() {
+    Delete_Word(words_to_cycle[current_word_index].length);
+    setTimeout(() => {
+      current_word_index += 1;
+      if (current_word_index >= words_to_cycle.length) {
+        current_word_index = 0;
+      }
+      clearInterval(interval);
+      interval = setInterval(MainLoop, words_to_cycle[current_word_index].length * 250 + 4000);
+      Type_Word(1);
+    }, words_to_cycle[current_word_index].length * 100 + 500);
+  }
+
+  // Start typing animation when the window is focused
+  function startAnimation() {
+    if (!interval) {
+      interval = setInterval(MainLoop, 2000);
+    }
+  }
+
+  // Stop typing animation when the window is not focused
+  function stopAnimation() {
+    clearInterval(interval);
+    interval = null;
+  }
+
+  onMount(() => {
+    if (browser) {
+      // Start animation if the window is already focused
+      if (document.hasFocus()) {
+        startAnimation();
+      }
+
+      // Listen for focus and blur events
+      window.addEventListener('focus', startAnimation);
+      window.addEventListener('blur', stopAnimation);
+    }
+  });
+
+  onDestroy(() => {
+    if (browser) {
+      // Cleanup
+      stopAnimation();
+      window.removeEventListener('focus', startAnimation);
+      window.removeEventListener('blur', stopAnimation);
+    }
+  });
+
 </script>
 
 <main>    
@@ -74,7 +103,7 @@
             <GoGift/>
         </div>
         <div id="title">
-            Presents Findr
+            Presents Finder
         </div>
     </div>
 
@@ -164,10 +193,30 @@ main{
     -webkit-box-shadow:0px 0px 30px 4px rgba(255,238,46,0.33);
     -moz-box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
     box-shadow: 0px 0px 30px 4px rgba(255,238,46,0.33);
+
+    animation: flow 1s;
+}
+
+@keyframes flow {
+    0% {
+        opacity: 50%;
+        transform: translateX(-20px);
+    }
+
+    100%{
+        opacity: 100%;
+        transform: translateX(0px);
+    }
 }
 
 #start:hover{
     cursor: pointer;
+    transition: 250ms;
+
+    /*Glow effect*/
+    -webkit-box-shadow:0px 0px 30px 8px rgba(255,238,46,0.33);
+    -moz-box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
+    box-shadow: 0px 0px 30px 8px rgba(255,238,46,0.33);
 }
 
 #gift-icon{
@@ -191,6 +240,16 @@ main{
     user-select: none;
 }
 
+@keyframes item-loading {
+    0%{
+        color: transparent;
+    }
+
+    100%{
+        background-color: transparent;
+    }
+}
+
 #description1{
     font-family: "Roboto";
     font-weight: 100;
@@ -198,6 +257,10 @@ main{
     margin: 20px 10% 30px 10%;
     text-align: center;
     color: rgb(255, 255, 255);
+
+    animation: item-loading 500ms;
+    animation-timing-function: ease-in;
+    border-radius: 5px;
 }
 
 #description2{
@@ -207,16 +270,24 @@ main{
     color: rgb(135, 135, 135);
     width: fit-content;
     margin: 0px 20px 30px 20px;
+
+    animation: item-loading 500ms;
+    animation-timing-function: ease-in;
 }
 
 #animation-container{
     font-size: 33px;
     font-weight: 400;
     color: rgb(255, 255, 255);
+
+    animation: item-loading 500ms;
+    animation-timing-function: ease-in;
 }
 
 #animation{
     white-space: nowrap;
+    animation: item-loading 500ms;
+    animation-timing-function: ease-in;
 }
 
 #cursor,#cursor-deleting-typing {
@@ -239,7 +310,6 @@ main{
     }
 }
 
-
 #title2{
     font-family: "Oswald";
     font-size: 32px;
@@ -256,10 +326,10 @@ main{
     background-color: rgb(25, 25, 25);
     padding-top: 20px;
     border-top: 1px solid rgb(41, 41, 41);
-    min-height: 50vh;
-    height: fit-content;
-
+    min-height: fit-content;
+    padding-bottom: 30px;
 }
+
 
 #clock-icon{
     margin-top: 3px;
@@ -289,5 +359,4 @@ main{
     margin-top: 10px;
     justify-content: space-around;
 }
-
 </style>
