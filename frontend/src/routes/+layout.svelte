@@ -14,4 +14,9 @@
 }    
 </style>
 
+<script 
+    data-goatcounter="https://smravec.goatcounter.com/count"
+    async src="//gc.zgo.at/count.js">
+</script>
+
 <slot/>
