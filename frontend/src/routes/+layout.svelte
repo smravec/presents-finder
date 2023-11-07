@@ -17,6 +17,6 @@
 <slot/>
 
 <svelte:head>
-    <script data-goatcounter="https://yoursubdomain.goatcounter.com/count"
+    <script data-goatcounter="https://smravec.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
 </svelte:head>
