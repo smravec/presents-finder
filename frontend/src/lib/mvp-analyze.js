@@ -77,7 +77,32 @@ export function MvpAnalyze(answers){
                 let item_to_add = [MvpData[x][item][0],MvpData[x][item][1],MvpData[x][item][2],false]
                 results[x].push(item_to_add)
             }   
-        }        
+        }
+        //if there are not enough results drop some requirements and run the elimination again
+        if( results[x].length < 3){
+            console.log("not three")
+            //Add all that fit
+            for (let item = 0; item < MvpData[x].length; item++) {
+                let fit = true 
+                
+                //Cycle trough all interests if they are in the elem
+                MvpData[x][item][2].forEach(element => {
+                    if(quiz_answers[0].includes(element) === false){
+                        fit = false
+                    }
+                })            
+
+                //Check if age group is good
+                if(MvpData[x][item][3].includes(quiz_answers[1][0]) === false){
+                    fit = false
+                }         
+
+                if(fit === true){
+                    let item_to_add = [MvpData[x][item][0],MvpData[x][item][1],MvpData[x][item][2],false]
+                    results[x].push(item_to_add)
+                }   
+            }
+        }
     }
 
     //If there are more than 3 results for each price category remove the one with one interest
