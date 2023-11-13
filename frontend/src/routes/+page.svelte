@@ -3,6 +3,7 @@
     import FaRegClock from 'svelte-icons/fa/FaRegClock.svelte'
     import MdChatBubbleOutline from 'svelte-icons/md/MdChatBubbleOutline.svelte'
     import GoGift from 'svelte-icons/go/GoGift.svelte'
+    import GoMarkGithub from 'svelte-icons/go/GoMarkGithub.svelte'
 
     //Animation
     import { onMount, onDestroy } from 'svelte';
@@ -145,7 +146,22 @@
             </div>
             
         </div>
-
+            <div id="bottom-container">
+            <div id="source">
+                <div id="source-text">
+                    Source code 
+                </div>
+                <a href="https://github.com/smravec/presents-finder" id="source-img">
+                    <GoMarkGithub/>
+                </a>
+            </div>
+            <div id="technology">
+                <div id="technology-text">
+                    Web Framework used
+                </div>
+                <img id="technology-img" src="/svelte.png" alt="svelte-logo">
+            </div>
+            </div>
     </div>
     
 </main>
@@ -313,8 +329,10 @@ main{
 
 #usage-container{
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     background-color: rgb(25, 25, 25);
     padding-top: 20px;
@@ -322,7 +340,6 @@ main{
     min-height: fit-content;
     padding-bottom: 30px;
 }
-
 
 #clock-icon{
     margin-top: 3px;
@@ -351,5 +368,71 @@ main{
     width: 80vw;
     margin-top: 10px;
     justify-content: space-around;
+}
+
+#bottom-container{
+    margin-top: 90px;
+    display: none;
+    width: 60vw;
+    padding-top: 40px;
+    border-top: 1px solid rgb(45, 45, 45);
+}
+
+#source{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#source-text{
+    color: rgb(235, 228, 200); 
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-family: "Oswald";
+    border-bottom: 1px solid rgb(62, 62, 62);
+}
+
+#source-img{
+    height: 80px;
+    color: white;
+    animation: img-loading 1s;
+}
+
+#technology{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#technology-text{
+    color: rgb(235, 228, 200); 
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-family: "Oswald";
+    border-bottom: 1px solid rgb(62, 62, 62);
+}
+
+#technology-img{
+    height: 80px;
+    animation: img-loading 1s;
+}
+
+@keyframes img-loading {
+    0%{
+        opacity:  0%;
+    }
+
+    100%{
+        opacity: 100%;
+    }
+}
+
+@media screen and (min-height: 930px){
+    #bottom-container{
+        display:flex;
+        justify-content:space-evenly;
+    }
 }
 </style>
