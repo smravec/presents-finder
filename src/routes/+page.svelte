@@ -125,6 +125,11 @@
             Presents for any budget, all age ranges, any interests and hobbies...
         </div>
 
+        <div id="description2-desktop">
+            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai. <br/>
+            Presents for any budget, all age ranges, any interests and hobbies...
+        </div>
+
         <div id='icons-container'>
 
             <div id="time-container">
@@ -272,7 +277,7 @@ main{
     border-radius: 5px;
 }
 
-#description2{
+#description2,#description2-desktop{
     font-weight: 100;
     font-size: 24px;
     text-align: center ;
@@ -282,6 +287,20 @@ main{
 
     animation: item-loading 500ms;
     animation-timing-function: ease-in;
+}
+
+#description2-desktop{
+    display:none;
+}
+
+@media screen and (min-width: 1700px){
+    #description2-desktop{
+        display: block;
+    }
+
+    #description2{
+        display: none;
+    }
 }
 
 #animation-container{
