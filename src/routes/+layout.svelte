@@ -1,6 +1,6 @@
 <style>
 :global(*){
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto Mono',sans-serif;
 }
 
 :global(body){

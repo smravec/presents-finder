@@ -202,7 +202,7 @@
         </button>
 
         <div id="disclaimer">
-            *By clicking this button all your <br/> current suggestions will dissapear
+            *By clicking this button all your <br/> current suggestions will disappear
         </div>
     </div>
 </main>
@@ -298,12 +298,10 @@
         margin-bottom: 10px;
         font-size: 42px;
         align-self: center;
-        font-family: "Roboto Mono";
         color: rgb(236, 236, 236);
     }
 
     #affiliate-reminder{
-        font-family: "Roboto Mono";
         font-size: 17px;
         margin: 5px 10px 0px 10px;
         text-align: center;
@@ -411,7 +409,6 @@
         margin-bottom: 15px;
         padding: 5px 0px 5px 0px;
         font-weight: 600;
-        font-family: "Roboto Mono";
         font-size: 13px;
 
         /*Glow effect*/
@@ -435,17 +432,17 @@
         margin-left: 10px;
         margin-right: 10px;
         height: 35px;
-        font-family: "Roboto";
     }
 
     #footer{
         display: flex;
         flex-direction: column;
-        margin-top: 50px;
+        margin-top: 80px;
         background-color: rgb(25, 25, 25);
         padding-top: 20px;
         border-top: 1px solid rgb(41, 41, 41);
         align-items: center;
+        height: fit-content;
     }
 
     #better-suggestions{
@@ -457,16 +454,16 @@
         font-size: 32px;
         align-self: center;
         text-align: center;
-        font-family: "Oswald";
     }
 
     #better-suggestion-tips{
         font-weight: 100;
-        font-size: 22px;
+        font-size: 17px;
         text-align: center ;
         color: rgb(135, 135, 135);
         width: fit-content;
-        margin: 0px 20px 38px 20px;
+        margin: 0px 10px 45px 20px;
+        text-align: left;
 
         animation: item-loading 2250ms;
         animation-timing-function: ease-in;
@@ -476,15 +473,14 @@
         color: white;
         border: none;
         background-color: #F6C90E;
-        color: black;
+        color: #000000;
+        font-family: "Oswald";
 
-        font-family: "Roboto Mono";
-        font-weight: 600;
-        font-size: 16px;
+        font-size: 28px;
+        padding: 5px 20px 5px 20px;
 
         width: 50%;
         min-width: 280px;
-        height: 42px;
         border-radius: 10px;
         margin-bottom: 10px;
 
@@ -507,7 +503,6 @@
     #disclaimer{
         color: rgb(92, 92, 92);
         text-align: center;
-        font-family: "Roboto Mono";
         margin-bottom: 30px;
         font-size: 10px;
     }

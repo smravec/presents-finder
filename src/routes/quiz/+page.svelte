@@ -160,8 +160,6 @@ main{
     margin-top: 20px;
     padding: 10px;     
 
-    font-family: "Roboto Mono";
-
     color:white;
 
     transition: 100ms;
@@ -201,9 +199,8 @@ main{
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
     user-select: none;
-    font-family: "Oswald";
     font-size: 28px;
-    font-weight: 500;
+    font-family: "Oswald";
 
     padding: 2px 20px 2px 20px;
     margin-top: 20px;
@@ -213,7 +210,7 @@ main{
     min-width: 140px;
 
     background-color: #F6C90E;
-    color: rgb(29, 29, 29);
+    color: #000000;
 
     -webkit-tap-highlight-color: transparent;
 

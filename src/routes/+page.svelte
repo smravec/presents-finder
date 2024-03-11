@@ -121,7 +121,7 @@
         </div>
 
         <div id="description2">
-            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai.  
+            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai.<br/>  
             Presents for any budget, all age ranges, any interests and hobbies...
         </div>
 
@@ -265,7 +265,6 @@ main{
 }
 
 #description1{
-    font-family: "Roboto";
     font-weight: 100;
     font-size: 33px;
     margin: 20px 10% 30px 10%;
@@ -280,10 +279,10 @@ main{
 #description2,#description2-desktop{
     font-weight: 100;
     font-size: 24px;
-    text-align: center ;
+    text-align: left ;
     color: rgb(135, 135, 135);
     width: fit-content;
-    margin: 0px 20px 30px 20px;
+    margin: 0px 10px 30px 20px;
 
     animation: item-loading 500ms;
     animation-timing-function: ease-in;
@@ -339,7 +338,6 @@ main{
 }
 
 #title2{
-    font-family: "Oswald";
     font-size: 32px;
     color: rgb(190, 185, 162);
 
@@ -408,7 +406,6 @@ main{
     color: rgb(235, 228, 200); 
     font-size: 26px;
     margin-bottom: 10px;
-    font-family: "Oswald";
     border-bottom: 1px solid rgb(62, 62, 62);
 }
 
@@ -429,7 +426,6 @@ main{
     color: rgb(235, 228, 200); 
     font-size: 26px;
     margin-bottom: 10px;
-    font-family: "Oswald";
     border-bottom: 1px solid rgb(62, 62, 62);
 }
 
