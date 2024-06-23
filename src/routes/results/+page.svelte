@@ -190,7 +190,7 @@
     <div id="footer">
         <div id="better-suggestions">Want better suggestions?</div>
         <div id="better-suggestion-tips">
-            In each questions select as much answer possible, to let the algorithm pick the most suitable presents.
+            In each questions select as much answers as possible, to let the algorithm pick the most suitable presents.
         </div>
         <button
         id="take-quiz-again" 
