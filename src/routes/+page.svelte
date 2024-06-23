@@ -9,7 +9,7 @@
     import { onMount, onDestroy } from 'svelte';
     import { browser } from '$app/environment';
 
-    const words_to_cycle = ["friend", "relative", "partner", "neighbor", "kid", "colleague"];
+    const words_to_cycle = ["friend", "relative", "partner", "neighbor", "kid", "colleague", "acquaintance", "companion", "peer", "classmate", "roommate", "teammate", "buddy", "associate", "co-worker", "comrade", "spouse", "sibling", "parent", "child", "cousin", "uncle", "aunt", "grandparent", "mentor", "protégé", "playmate", "fellow", "confidant"];
     let init_word = words_to_cycle[0];
     let current_word_index = 0;
     let deleting_or_typing = false;
@@ -121,13 +121,11 @@
         </div>
 
         <div id="description2">
-            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai.<br/>  
-            Presents for any budget, all age ranges, any interests and hobbies...
+            Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of AI<br/>  
         </div>
 
         <div id="description2-desktop">
-            Fill out a quick 2 to 3 min quiz and get personalized gift ideas for someone with the help of ai. <br/>
-            Presents for any budget, all age ranges, any interests and hobbies...
+            Fill out a quick 2 min quiz and get personalized gift ideas for someone with the help of AI <br/>
         </div>
 
         <div id='icons-container'>
@@ -154,7 +152,7 @@
             <div id="bottom-container">
             <div id="source">
                 <div id="source-text">
-                    Source code 
+                    Source 
                 </div>
                 <a href="https://github.com/smravec/presents-finder" id="source-img">
                     <GoMarkGithub/>
@@ -162,7 +160,7 @@
             </div>
             <div id="technology">
                 <div id="technology-text">
-                    Web Framework used
+                    Framework
                 </div>
                 <img id="technology-img" src="/svelte.png" alt="svelte-logo">
             </div>
@@ -193,10 +191,10 @@ main{
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
 
-    font-family: "Oswald";
-    font-size: 33px;
+    font-size: 26px;
+    font-weight: 600;
 
-    padding: 2px 50px 2px 50px;
+    padding: 10px 50px 10px 50px;
     margin-top: 40px;
     margin-bottom: 100px;
     
@@ -248,9 +246,8 @@ main{
 
 #title{
     color: rgb(232, 232, 232);
-    font-size:  40px;
-    margin-left: 10px;
-    font-family: "Oswald";
+    font-size:  36px;
+    margin-left: 5px;
     user-select: none;
 }
 
@@ -389,10 +386,11 @@ main{
 
 #bottom-container{
     margin-top: 90px;
-    display: none;
-    width: 60vw;
+    width: 100%;
     padding-top: 40px;
     border-top: 1px solid rgb(45, 45, 45);
+    display:flex;
+    justify-content:space-evenly;
 }
 
 #source{
@@ -405,6 +403,7 @@ main{
 #source-text{
     color: rgb(235, 228, 200); 
     font-size: 26px;
+    text-wrap: nowrap;
     margin-bottom: 10px;
     border-bottom: 1px solid rgb(62, 62, 62);
 }
@@ -423,6 +422,7 @@ main{
 }
 
 #technology-text{
+    text-wrap: nowrap;
     color: rgb(235, 228, 200); 
     font-size: 26px;
     margin-bottom: 10px;
@@ -444,10 +444,10 @@ main{
     }
 }
 
-@media screen and (min-height: 930px){
+@media screen and (min-height: 900px){
     #bottom-container{
-        display:flex;
-        justify-content:space-evenly;
+        width: 60vw;
+        
     }
 }
 </style>

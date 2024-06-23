@@ -1,6 +1,4 @@
 <script>
-    import MdFitnessCenter from 'svelte-icons/md/MdFitnessCenter.svelte'
-
     import GoGift from 'svelte-icons/go/GoGift.svelte'
     import {MvpAnalyze} from '$lib/mvp-analyze.js'
     import {Quiz} from '$lib/mvp-analyze.js'
@@ -192,8 +190,7 @@
     <div id="footer">
         <div id="better-suggestions">Want better suggestions?</div>
         <div id="better-suggestion-tips">
-            Try to select as much answers as possible in each question to improve the quality of the results.
-            The algorithm outputs different suggestions each time, so retaking the quiz even with the same answers most of the time outputs different and potentially better suggestions.
+            In each questions select as much answer possible, to let the algorithm pick the most suitable presents.
         </div>
         <button
         id="take-quiz-again" 
@@ -328,7 +325,6 @@
         background-color: rgb(35, 35, 35);
         color: rgb(255, 255, 255);
         font-size: 22px;
-        font-family: "Oswald";
         border: 1px solid white;
         border-radius: 5px;
         padding: 10px;
@@ -474,12 +470,11 @@
         border: none;
         background-color: #F6C90E;
         color: #000000;
-        font-family: "Oswald";
 
-        font-size: 28px;
-        padding: 5px 20px 5px 20px;
+        font-size: 20px;
+        font-weight: 600;
 
-        width: 50%;
+        padding: 12px 20px 12px 20px;
         min-width: 280px;
         border-radius: 10px;
         margin-bottom: 10px;

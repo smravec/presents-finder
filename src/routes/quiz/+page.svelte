@@ -7,11 +7,11 @@
     let IndexLastAnswer = -1
     let TempQuiz = [
             // ["Question", true/false able to pick only one], ["Possible Answer", true/false picked or not] 21...
-            ["Their age group?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
+            ["How old are they?",true],[["Child",false],['Teen',false],['Young Adult',false],['Adult',false],['Senior',false]],
             ["Should the gift be more practical or enjoyable?", true],[["More Practical", false],["More Enjoyable", false],["No Preference", false]],
             
             //Longer questions
-            ["What type of physical activities do they enjoy?<br/>(Pick all that apply)", false],
+            ["Do they have some of the following physical hobbies?<br/>(Pick all that apply)", false],
             [["Team Sports (e.g., Football, Hockey)", false],
             ["Cycling", false],
             ["Skateboarding", false],
@@ -24,7 +24,7 @@
             ["Fitness and Exercise", false],
             ["Other/None", false]],
             
-            ["What are their intellectual or creative hobbies?<br/>(Pick all that apply)", false],
+            ["Do they have some of the following intellectual or creative hobbies hobbies?<br/>(Pick all that apply)", false],
             [["Reading (e.g., Fiction, Non-fiction)", false],
             ["Gaming (e.g., Board Games, Video Games)", false],
             ["Anime/Manga", false],
@@ -36,7 +36,7 @@
             ["Cooking or Baking", false],
             ["Other/None", false]],
 
-            ["What's the occasion?", true],
+            ["What will be the occasion?", true],
             [["Birthday", false],
             ["Christmas", false],
             ["Easter", false],
@@ -199,10 +199,10 @@ main{
     border: 1px solid rgb(60, 60, 60);    
     border-radius: 8px;
     user-select: none;
-    font-size: 28px;
-    font-family: "Oswald";
+    font-size: 24px;
+    font-weight: 600;
 
-    padding: 2px 20px 2px 20px;
+    padding: 10px 20px 10px 20px;
     margin-top: 20px;
     margin-bottom: 45px;
     
